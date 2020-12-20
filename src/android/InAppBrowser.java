@@ -807,7 +807,13 @@ public class InAppBrowser extends CordovaPlugin {
                 }else{
 					dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 					//Set statusbar color & navigation bar
-					dialog.getWindow().getDecorView().setSystemUiVisibility(0);
+					
+					//isi hitam
+					//dialog.getWindow().getDecorView().setSystemUiVisibility(0);
+			
+					//isi putih
+					dialog.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+			
 					dialog.getWindow().clearFlags(0x04000000); // SDK 19: WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 					dialog.getWindow().addFlags(0x80000000); 
 					dialog.getWindow().setStatusBarColor(toolbarColor); 
