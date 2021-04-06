@@ -812,12 +812,36 @@ public class InAppBrowser extends CordovaPlugin {
 					//dialog.getWindow().getDecorView().setSystemUiVisibility(0);
 			
 					//isi putih
-					dialog.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-			
+					
 					dialog.getWindow().clearFlags(0x04000000); // SDK 19: WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 					dialog.getWindow().addFlags(0x80000000); 
+					
+					//top
 					dialog.getWindow().setStatusBarColor(toolbarColor); 
+					dialog.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+					
+					//bottom
 					dialog.getWindow().setNavigationBarColor(toolbarColor);
+					
+					
+					/* Top White , Bottom White : start */
+					
+					Window window = dialog.getWindow();
+
+					// clear FLAG_TRANSLUCENT_STATUS flag:
+					window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+					// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+					window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+					
+					window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+					// finally change the color
+					window.setStatusBarColor(toolbarColor);
+					
+					/* Top White , Bottom White : end */
+					
+				
 				}
 				
                 dialog.setCancelable(true);
